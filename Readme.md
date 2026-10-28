@@ -35,7 +35,7 @@ The app is built in sprints. Each sprint has a card on the [sprint board](https:
 |---|---|---|---|
 | 1 | [Setup & authentication](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/1) | S1–S4 | ✅ Done · [docs](docs/SPRINT-1.md) |
 | 2 | [App shell: Home, navigation, profile](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/2) | S5–S7, S28, S29 | 🚧 ✅ Done · [docs]
-| 3 | [Strength workout logging](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/3) | S9–S12, S16 | Backlog |
+| 3 | [Strength workout logging](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/3) | S9–S12, S16 | 🔍 In review · docs
 | 4 | [Workout history & detail](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/4) | S17, S18, S30, S31 | Backlog |
 | 5 | [Progress charts & personal records](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/5) | S19, S20 | Backlog |
 | 6 | [Goals](https://github.com/MDMEHEDIHASA/Fitness-app-26/issues/6) | S21, S22 | Backlog |
@@ -126,6 +126,7 @@ app/src/main/java/com/unh/fitnesstracker/
 ├── data/
 │   ├── model/                 Firestore data classes (UserProfile, ...)
 │   └── repository/            The only code that talks to Firebase
+|    └── session/               ActiveWorkoutSession: the workout in progress
 └── ui/
     ├── theme/                 Colors, typography, Material 3 theme
     ├── navigation/            Routes and NavHost
@@ -133,6 +134,8 @@ app/src/main/java/com/unh/fitnesstracker/
     ├── auth/                  S1–S3 Log In / Sign Up (+ ViewModels)
     ├── onboarding/            S4 Health & Permissions
     └── home/                  S5 Home
+    ├── workout/               S7 sheet, S9–S12 active workout, S16 summary, Workouts tab
+    └── profile/               S28 Profile & Settings
 docs/
 ├── SPRINT-PLAN.md             Full roadmap and Firestore data model
 └── SPRINT-N.md                Write-up for each completed sprint
@@ -146,6 +149,7 @@ All user data lives under `users/{uid}` in Firestore, so a single security rule 
 users/{uid}                    profile and settings
 users/{uid}/workouts/{id}      strength and outdoor workouts
 users/{uid}/templates/{id}     saved workout templates
+users/{uid}/customExercises/{id}  exercises the user created
 users/{uid}/goals/{id}         goals
 users/{uid}/reminders/{id}     reminders
 users/{uid}/dailyStats/{date}  steps, resting heart rate, active minutes
